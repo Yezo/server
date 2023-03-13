@@ -3,6 +3,7 @@ import express, { Express } from "express"
 import cors from "cors"
 import "dotenv/config"
 import { createWord, deleteWord, getWord, getWords } from "./db"
+import { validateTitle } from "./validateTitle"
 
 // Middlware
 const app: Express = express()
@@ -28,8 +29,10 @@ app.get("/words/:id", async (req, res) => {
 
 app.post("/words", async (req, res) => {
   const { title, definition } = req.body
-  const word = await createWord(title, definition)
-  res.status(201).json(word)
+  if (validateTitle(title)) {
+    const word = await createWord(title, definition)
+    res.status(201).json(word)
+  } else res.status(400).json("Invalid title!")
 })
 
 app.delete("/words", async (req, res) => {
