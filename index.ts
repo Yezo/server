@@ -6,7 +6,7 @@ import { createWord, deleteWord, getWord, getWords } from "./db"
 import { validateTitle } from "./validateTitle"
 
 // Middlware
-const app: Express = express()
+export const app: Express = express()
 app.use(cors())
 app.use(express.json())
 

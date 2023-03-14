@@ -15,7 +15,6 @@ const pool = mysql
 //GET all words in the "words" database
 export async function getWords() {
   const [rows] = await pool.query("SELECT * FROM words")
-  console.log(rows)
   return rows
 }
 

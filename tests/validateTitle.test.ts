@@ -1,4 +1,4 @@
-import { validateTitle } from "./validateTitle"
+import { validateTitle } from "../validateTitle"
 
 // title should not be empty
 // title should be not above 45 chars (longest word in dictionary)
